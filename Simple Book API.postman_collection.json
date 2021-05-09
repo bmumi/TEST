@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7f5d3197-3540-4acd-9231-87a827aba1d9",
+		"_postman_id": "031dbc66-4f79-490f-ba4c-ddd66a16bc83",
 		"name": "Simple Book API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,9 +11,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/status",
+					"raw": "https://simple-books-api.glitch.me/status",
+					"protocol": "https",
 					"host": [
-						"{{baseUrl}}"
+						"simple-books-api",
+						"glitch",
+						"me"
 					],
 					"path": [
 						"status"
@@ -23,38 +26,198 @@
 			"response": []
 		},
 		{
-			"name": "List of books",
+			"name": "Tested with query parameter named type with the value \"test\"",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/status",
+					"raw": "https://simple-books-api.glitch.me/books?type=test",
+					"protocol": "https",
 					"host": [
-						"{{baseUrl}}"
+						"simple-books-api",
+						"glitch",
+						"me"
 					],
 					"path": [
-						"status"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get single book",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "/books/:bookId",
-					"path": [
-						"books",
-						":bookId"
+						"books"
 					],
-					"variable": [
+					"query": [
 						{
-							"key": "bookId",
-							"value": ""
+							"key": "type",
+							"value": "test"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tested with query parameter named type with the value \"fiction\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/books?type=fiction",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "fiction"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tested with query parameter named type with the value \"non-fiction\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/books?type=non-fiction",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "non-fiction"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tested with query parameters named limit and type with the value \"2\" and \"fiction\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/books?type=fiction&limit=2",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "fiction"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tested with query parameter value  with the value \"x\" ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/books?value=x",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "x"
+						},
+						{
+							"key": "value",
+							"value": "fiction",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tested with query parameters named type and limit with the value \"fiction\" and \"25\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/books?type=fiction&limit=25",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "fiction"
+						},
+						{
+							"key": "limit",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register API client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Muamera\",\r\n   \"clientEmail\": \"muamera@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/api-clients",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api-clients"
 					]
 				}
 			},
@@ -63,29 +226,80 @@
 		{
 			"name": "Order book",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "/books/:bookId",
-					"path": [
-						"books",
-						":bookId"
+					"raw": "https://simple-books-api.glitch.me/orders",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
 					],
-					"variable": [
-						{
-							"key": "bookId",
-							"value": ""
-						}
+					"path": [
+						"orders"
 					]
 				}
 			},
 			"response": []
-		}
-	],
-	"variable": [
+		},
 		{
-			"key": "baseUrl",
-			"value": "https://simple-books-api.glitch.me"
+			"name": "Register API client with 3 parameters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Muamera\",\r\n   \"clientEmail\": \"muamera@example.com\"\r\n   \"cl\": \"bb\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/api-clients",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api-clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register already exist API client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Muamera\",\r\n   \"clientEmail\": \"muamera@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/api-clients",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api-clients"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

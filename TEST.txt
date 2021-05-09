@@ -1,0 +1,241 @@
+Route 1: https://simple-books-api.glitch.me/status
+Tested status
+API should return status OK
+
+Result
+Status code: 200 - OK
+{
+    "status": "OK"
+}
+.
+.
+.
+Route 2: https://simple-books-api.glitch.me/books?type=test
+Tested with query parameter named type with the value "test"
+API should return a descriptive error 
+
+Result
+Status code: 400 - Bad request
+{
+    "error": "Invalid value for query parameter 'type'. Must be one of: fiction, non-fiction."
+}
+.
+.
+.
+Route 3:https://simple-books-api.glitch.me/books?type=fiction
+Tested with query parameter named type with the value "fiction"
+API should return a list of book with type "fiction"
+
+Results
+Status code: 200 - OK
+[
+    {
+        "id": 1,
+        "name": "The Russian",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 3,
+        "name": "The Vanishing Half",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 4,
+        "name": "The Midnight Library",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 6,
+        "name": "Viscount Who Loved Me",
+        "type": "fiction",
+        "available": true
+    }
+]
+
+Route 4: https://simple-books-api.glitch.me/books?type=non-fiction
+Tested with query parameter named type with the value "non-fiction"
+API should return a list of book with type "non-fiction"
+
+Results
+Status code:  200 - OK
+[
+    {
+        "id": 2,
+        "name": "Just as I Am",
+        "type": "non-fiction",
+        "available": false
+    },
+    {
+        "id": 5,
+        "name": "Untamed",
+        "type": "non-fiction",
+        "available": true
+    }
+]
+.
+.
+.
+Route 5: https://simple-books-api.glitch.me/books?type=fiction&limit=2
+Tested with query parameters named limit and type with the value "2" and "fiction"
+API should return a list of 2 book with type "fiction"
+
+Results
+Status code: 200 - OK
+[
+    {
+        "id": 1,
+        "name": "The Russian",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 3,
+        "name": "The Vanishing Half",
+        "type": "fiction",
+        "available": true
+    }
+]
+.
+.
+.
+Route 6: https://simple-books-api.glitch.me/books?value=x
+Tested with query parameter value  with the value "x" 
+API should return a descriptive error
+
+Results
+Status code: 200 - OK
+[
+    {
+        "id": 1,
+        "name": "The Russian",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 2,
+        "name": "Just as I Am",
+        "type": "non-fiction",
+        "available": false
+    },
+    {
+        "id": 3,
+        "name": "The Vanishing Half",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 4,
+        "name": "The Midnight Library",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 5,
+        "name": "Untamed",
+        "type": "non-fiction",
+        "available": true
+    },
+    {
+        "id": 6,
+        "name": "Viscount Who Loved Me",
+        "type": "fiction",
+        "available": true
+    }
+]
+.
+.
+.
+Route 7: https://simple-books-api.glitch.me/books?type=fiction&value=2
+Tested with query parameters named type and value with the value "fiction" and "2"
+API should return a descriptive error
+
+Results
+Status code: 200 - OK
+[
+    {
+        "id": 1,
+        "name": "The Russian",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 3,
+        "name": "The Vanishing Half",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 4,
+        "name": "The Midnight Library",
+        "type": "fiction",
+        "available": true
+    },
+    {
+        "id": 6,
+        "name": "Viscount Who Loved Me",
+        "type": "fiction",
+        "available": true
+    }
+]
+.
+.
+.
+Route 8: https://simple-books-api.glitch.me/books?type=fiction&limit=25
+Tested with query parameters named type and limit with the value "fiction" and "25"
+API should return a descriptive error
+
+Results: 400 - Bad Request
+{
+    "error": "Invalid value for query parameter 'limit'. Cannot be greater than 20."
+}
+.
+.
+.
+Route 9: https://simple-books-api.glitch.me/orders
+Tested with incompleted data
+API should return a descriptive error
+
+Results
+Status code: 401 - Unauthorized
+{
+    "error": "Missing Authorization header."
+}
+.
+.
+.
+Route 10: https://simple-books-api.glitch.me/api-clients
+Creating a new client (correct data)
+API should create new client
+
+Results
+Status code: 201 - Created
+{
+    "accessToken": "3e403190e208274ecb641c659150edeae9cffbb7b35a6e742de35418bccd1579"
+}
+.
+.
+.
+Route 11: https://simple-books-api.glitch.me/api-clients
+Creating a new client (incorrect data)
+API should return error
+
+Results
+Statuse code: 422 - Unprocessable Entity
+Unprocessable Entity
+.
+.
+.
+Route 12: https://simple-books-api.glitch.me/api-clients
+Creating a new client (already registred)
+API should return a descriptive error
+
+Results
+Status code: 409 - Conflict
+{
+    "error": "API client already registered."
+}
+
+
